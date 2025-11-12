@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>HackerManHub Wiki</title>
-  <meta name="viewport" content="width=device‑width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans‑serif;
+      font-family: Arial, sans-serif;
       line-height: 1.6;
       margin: 0;
       padding: 0;
@@ -21,24 +21,31 @@
     }
     nav {
       background: #444;
-      padding: 10px;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    nav a {
+    nav button {
+      background: none;
+      border: none;
       color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 1em;
     }
-    nav a:hover {
-      text-decoration: underline;
+    nav button:hover, nav button.active {
+      background: #555;
     }
     .container {
       max-width: 900px;
       margin: 20px auto;
       padding: 0 15px;
     }
-    section {
-      margin-bottom: 40px;
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
     }
     h2 {
       border-bottom: 2px solid #ddd;
@@ -51,15 +58,56 @@
     .developers li {
       margin-bottom: 10px;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      background: #222;
-      color: #fff;
-    }
     a.external {
       color: #0066cc;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+    .sidebar.active {
+      right: 0;
+    }
+    .sidebar .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      float: right;
+      cursor: pointer;
+    }
+    .sidebar img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .sidebar h3 {
+      margin-top: 10px;
+    }
+    .dev-btn {
+      background: #eee;
+      border: none;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      font-size: 1em;
+      border-radius: 4px;
+    }
+    .dev-btn:hover {
+      background: #ddd;
     }
   </style>
 </head>
@@ -71,59 +119,100 @@
 </header>
 
 <nav>
-  <a href="#studio">Studio Overview</a>
-  <a href="#developers">Developers</a>
-  <a href="#eoa">Echos Of Admins (EOA)</a>
-  <a href="#jat">Just Another Tuesday (JAT)</a>
-  <a href="#links">Links</a>
+  <button data-target="studio" class="active">Studio Overview</button>
+  <button data-target="developers">Developers</button>
+  <button data-target="eoa">Echos Of Admins (EOA)</button>
+  <button data-target="jat">Just Another Tuesday (JAT)</button>
+  <button data-target="links">Links</button>
 </nav>
 
 <div class="container">
 
-  <section id="studio">
+  <section id="studio" class="section active">
     <h2>Studio Overview</h2>
-    <p>HackerManHub (HMH) is a Roblox development studio committed to creating immersive and fun experiences on the Roblox platform. Currently, HMH is working on two upcoming games: <strong>Echos Of Admins</strong> (EOA) and <strong>Just Another Tuesday</strong> (JAT). Though the games are not yet released, this wiki will serve as an information hub for the studio, its developers, and the individual game projects.</p>
+    <p>HackerManHub (HMH) is a Roblox development studio committed to creating immersive and fun experiences on the Roblox platform. Currently, HMH is working on two upcoming games: <strong>Echos Of Admins</strong> (EOA) and <strong>Just Another Tuesday</strong> (JAT). Although the games are not yet released, this wiki will serve as an information hub for the studio, its developers, and the individual game projects.</p>
     <p>The studio focuses on high‑quality gameplay, creative design, and community engagement. Stay tuned for updates on the releases!</p>
   </section>
 
-  <section id="developers" class="developers">
+  <section id="developers" class="section">
     <h2>Developers</h2>
-    <p>Here are the team members at HMH and a little bit about each:</p>
+    <p>Click a developer's name to view more info:</p>
     <ul>
-      <li><strong>Developer 1</strong> – Role at the studio, some info about background, skills, interests.</li>
-      <li><strong>Developer 2</strong> – Role, background, specialties.</li>
-      <li><strong>Developer 3</strong> – …</li>
-      <!-- Add as many developers as you have -->
+      <li><button class="dev-btn" data-name="Dev One" data-img="images/dev1.jpg" data-info="Main scripter and project lead for EOA. Loves clean UI and optimization.">Dev One</button></li>
+      <li><button class="dev-btn" data-name="Dev Two" data-img="images/dev2.jpg" data-info="3D artist and animator working on JAT. Known for expressive character rigs.">Dev Two</button></li>
+      <li><button class="dev-btn" data-name="Dev Three" data-img="images/dev3.jpg" data-info="Handles map design and gameplay mechanics across both projects.">Dev Three</button></li>
     </ul>
-    <p>Total Developers: <strong>X</strong></p>
+    <p>Total Developers: <strong>3</strong></p>
   </section>
 
-  <section id="eoa">
+  <section id="eoa" class="section">
     <h2>Echos Of Admins (EOA)</h2>
     <p>Game description: This is an upcoming project by HMH. (Describe the game concept, genre, gameplay mechanics, theme, target release platforms, etc.)</p>
     <p>Status: Currently in development.</p>
   </section>
 
-  <section id="jat">
+  <section id="jat" class="section">
     <h2>Just Another Tuesday (JAT)</h2>
     <p>Game description: This is the second project by HMH. (Describe what makes it distinct from EOA, game genre, style, unique features.)</p>
     <p>Status: Currently in development.</p>
   </section>
 
-  <section id="links">
+  <section id="links" class="section">
     <h2>Important Links</h2>
     <p>Join our community and stay updated:</p>
     <ul>
       <li><a class="external" href="https://discord.gg/robloxeoa" target="_blank" rel="noopener">Discord Server</a></li>
-      <li><a class="external" href="https://www.roblox.com/communities/372743535/Hackerman-Hub#!/about" target="_blank" rel="noopener">Roblox Studio Group</a></li>
+      <li><a class="external" href="https://www.roblox.com/communities/372743535/Hackerman‑Hub#!/about" target="_blank" rel="noopener">Roblox Studio Group</a></li>
     </ul>
   </section>
 
 </div>
 
-<footer>
-  <p>© 2025 HackerManHub. All rights reserved.</p>
-</footer>
+<!-- Sidebar panel for developer details -->
+<div id="dev-sidebar" class="sidebar">
+  <button class="close-btn">×</button>
+  <img id="dev-img" src="" alt="Developer Image">
+  <h3 id="dev-name"></h3>
+  <p id="dev-info"></p>
+</div>
+
+<script>
+  // Tab navigation logic
+  const buttons = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('.section');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      btn.classList.add('active');
+      const target = btn.getAttribute('data-target');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  // Developer sidebar logic
+  const devBtns = document.querySelectorAll('.dev-btn');
+  const sidebar = document.getElementById('dev-sidebar');
+  const devImg = document.getElementById('dev-img');
+  const devName = document.getElementById('dev-name');
+  const devInfo = document.getElementById('dev-info');
+  const closeBtn = document.querySelector('.close-btn');
+
+  devBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      devImg.src = btn.getAttribute('data-img');
+      devName.textContent = btn.getAttribute('data-name');
+      devInfo.textContent = btn.getAttribute('data-info');
+      sidebar.classList.add('active');
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+  });
+</script>
 
 </body>
 </html>
