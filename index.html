@@ -13,7 +13,7 @@
       --nav-button-hover: #333;
       --section-bg: #1a1a1a;
     }
-    .light-mode {
+    .light‑mode {
       --bg-color: #f9f9f9;
       --text-color: #333;
       --nav-bg: #444;
@@ -82,11 +82,11 @@
       border-bottom: 2px solid #ddd;
       padding-bottom: 5px;
     }
-    .developers ul {
+    .developers ul, .characters ul {
       list-style: none;
       padding: 0;
     }
-    .developers li {
+    .developers li, .characters li {
       margin-bottom: 10px;
     }
     a.external {
@@ -126,7 +126,7 @@
     .sidebar h3 {
       margin-top: 10px;
     }
-    .dev-btn {
+    .dev-btn, .char-btn {
       background: #eee;
       border: none;
       padding: 10px;
@@ -137,7 +137,7 @@
       font-size: 1em;
       border-radius: 4px;
     }
-    .dev-btn:hover {
+    .dev-btn:hover, .char-btn:hover {
       background: #ddd;
     }
   </style>
@@ -155,6 +155,7 @@
   <button data-target="studio" class="active">Studio Overview</button>
   <button data-target="developers">Developers</button>
   <button data-target="eoa">Echos Of Admins (EOA)</button>
+  <button data-target="eoa-characters">EOA Characters</button> <!-- NEW TAB -->
   <button data-target="jat">Just Another Tuesday (JAT)</button>
   <button data-target="links">Links</button>
 </nav>
@@ -164,7 +165,7 @@
   <section id="studio" class="section active">
     <h2>Studio Overview</h2>
     <img src="image/hmhlogo.png" alt="HMH Logo" style="display:block; margin:20px auto; max-width:300px; background:#000; padding:10px; border-radius:6px;">
-    <p>HackerManHub (HMH) is a Roblox development studio committed to creating immersive and fun experiences on the Roblox platform. Currently, HMH is working on two upcoming games: <strong>Echos Of Admins (EOA)</strong> and <strong>Just Another Tuesday (JAT)</strong>. Although the games are not yet released, this wiki will serve as an information hub for the studio, its developers, and the individual game projects.</p>
+    <p>HackerManHub (HMH) is a Roblox development studio committed to creating immersive and fun experiences on the Roblox platform. Currently, HMH is working on two upcoming games: <strong>Echos Of Admins (EOA)</strong> and <strong>Just Another Tuesday (JAT)</strong>. Although the games are not yet released, this wiki will serve as an information hub for the studio, its developers, and the individual game projects.</p>
     <p>The studio focuses on high‑quality gameplay, creative design, and community engagement. Stay tuned for updates on the releases!</p>
   </section>
 
@@ -172,8 +173,8 @@
     <h2>Developers</h2>
     <img src="image/devbanner.jpg" alt="Developer Banner" style="width:100%; border-radius:6px; margin-bottom:10px;">
     <p><em>Above is 4 devs Jack, Aveemo, Aoki, and Redactedre.</em></p>
-	<p>Extra info below<p>
-	<p>a Legacy Developer is a developer who has been in the dev team from the start or very close to the start of the development team<p>
+    <p>Extra info below:</p>
+    <p>A Legacy Developer is a developer who has been in the dev team from the start or very close to the start of the development team.</p>
     <p>Click a developer's name to view more info:</p>
     <ul>
       <li><button class="dev-btn" data-name="Redactedre" data-img="image/devredact.png" data-info="Owner of HMH, EOA, and JAT. Developer responsible for backend systems and tooling, general team management, a Legacy Developer, and for firing/termination of developers when needed.">Redactedre</button></li>
@@ -188,6 +189,18 @@
     <h2>Echos Of Admins (EOA)</h2>
     <p>Game description: This is an upcoming project by HMH. (not done add text here.)</p>
     <p>Status: Currently in development.</p>
+  </section>
+
+  <section id="eoa-characters" class="section">
+    <h2>EOA Characters</h2>
+    <p>Below are some of the confirmed characters for Echos Of Admins:</p>
+    <ul class="characters">
+      <li><button class="char-btn" data-name="Redactedre" data-img="image/char_redactedre.png" data-info="Redactedre: The Supreme Admin. Once human; now a near‑immortal overseer controlling the digital domain.">Redactedre</button></li>
+      <li><button class="char-btn" data-name="Aoki" data-img="image/char_aoki.png" data-info="Aoki: The Strategist. Mastermind behind the rebellion against the corrupted system.">Aoki</button></li>
+      <li><button class="char-btn" data-name="Jack" data-img="image/char_jack.png" data-info="Jack: The Archivist. Keeper of forgotten logs and secrets of the Admins.">Jack</button></li>
+      <li><button class="char-btn" data-name="Aveemo" data-img="image/char_aveemo.png" data-info="Aveemo: The Mechanic. Engineer of weapons and defenses against the Admin invasion.">Aveemo</button></li>
+    </ul>
+    <p>More characters will be revealed soon. Stay tuned!</p>
   </section>
 
   <section id="jat" class="section">
@@ -209,24 +222,24 @@
 
 <div id="dev-sidebar" class="sidebar">
   <button class="close-btn">×</button>
-  <img id="dev-img" src="" alt="Developer Image">
+  <img id="dev-img" src="" alt="Developer or Character Image">
   <h3 id="dev-name"></h3>
   <p id="dev-info"></p>
 </div>
 
 <script>
   // Mode toggle logic
-  const toggleBtn = document.getElementById('mode-toggle');
+  const toggleBtn = document.getElementById('mode‑toggle');
   const bodyEl = document.body;
   let darkMode = true;
 
   toggleBtn.addEventListener('click', () => {
     darkMode = !darkMode;
     if (darkMode) {
-      bodyEl.classList.remove('light-mode');
+      bodyEl.classList.remove('light‑mode');
       toggleBtn.textContent = 'Light Mode';
     } else {
-      bodyEl.classList.add('light-mode');
+      bodyEl.classList.add('light‑mode');
       toggleBtn.textContent = 'Dark Mode';
     }
   });
@@ -241,25 +254,40 @@
       sections.forEach(sec => sec.classList.remove('active'));
 
       btn.classList.add('active');
-      const target = btn.getAttribute('data-target');
+      const target = btn.getAttribute('data‑target');
       document.getElementById(target).classList.add('active');
     });
   });
 
-  // Developer sidebar logic
+  // Sidebar logic for developers & characters
   const devBtns = document.querySelectorAll('.dev-btn');
+  const charBtns = document.querySelectorAll('.char-btn');
   const sidebar = document.getElementById('dev-sidebar');
   const devImg = document.getElementById('dev-img');
   const devName = document.getElementById('dev-name');
   const devInfo = document.getElementById('dev-info');
   const closeBtn = document.querySelector('.close-btn');
 
+  function openSidebar(name, imgSrc, infoText) {
+    devImg.src = imgSrc;
+    devName.textContent = name;
+    devInfo.textContent = infoText;
+    sidebar.classList.add('active');
+  }
+
   devBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      devImg.src = btn.getAttribute('data-img');
-      devName.textContent = btn.getAttribute('data-name');
-      devInfo.textContent = btn.getAttribute('data-info');
-      sidebar.classList.add('active');
+      openSidebar(btn.getAttribute('data‑name'),
+                  btn.getAttribute('data‑img'),
+                  btn.getAttribute('data‑info'));
+    });
+  });
+
+  charBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      openSidebar(btn.getAttribute('data‑name'),
+                  btn.getAttribute('data‑img'),
+                  btn.getAttribute('data‑info'));
     });
   });
 
@@ -270,4 +298,3 @@
 
 </body>
 </html>
-
